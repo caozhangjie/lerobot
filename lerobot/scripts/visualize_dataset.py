@@ -73,6 +73,7 @@ import rerun as rr
 import torch
 import torch.utils.data
 import tqdm
+import os
 
 from lerobot.common.datasets.lerobot_dataset import LeRobotDataset
 
@@ -289,4 +290,5 @@ def main():
 
 
 if __name__ == "__main__":
+    os.environ["WINIT_UNIX_BACKEND"] = "x11"
     main()
