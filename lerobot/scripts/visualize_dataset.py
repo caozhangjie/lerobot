@@ -74,6 +74,7 @@ import torch
 import torch.utils.data
 import tqdm
 import os
+import ipdb
 
 from lerobot.common.datasets.lerobot_dataset import LeRobotDataset
 
@@ -144,7 +145,7 @@ def visualize_dataset(
         rr.serve(open_browser=False, web_port=web_port, ws_port=ws_port)
 
     logging.info("Logging to Rerun")
-
+    ipdb.set_trace()
     for batch in tqdm.tqdm(dataloader, total=len(dataloader)):
         # iterate over the batch
         for i in range(len(batch["index"])):
