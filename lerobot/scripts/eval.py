@@ -79,6 +79,7 @@ from lerobot.common.utils.utils import (
 )
 from lerobot.configs import parser
 from lerobot.configs.eval import EvalPipelineConfig
+import ipdb
 
 
 def rollout(
