@@ -460,7 +460,7 @@ def _compile_episode_data(
 @parser.wrap()
 def eval_main(cfg: EvalPipelineConfig):
     logging.info(pformat(asdict(cfg)))
-
+    ipdb.set_trace()
     # Check device is available
     device = get_safe_torch_device(cfg.policy.device, log=True)
 

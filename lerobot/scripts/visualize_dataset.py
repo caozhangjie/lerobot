@@ -134,6 +134,12 @@ def visualize_dataset(
         raise ValueError(mode)
 
     spawn_local_viewer = mode == "local" and not save
+    os.environ.update({
+        "WINIT_UNIX_BACKEND": "x11",
+        "WAYLAND_DISPLAY": "",
+        "XDG_SESSION_TYPE": "x11"
+    })
+
     rr.init(f"{repo_id}/episode_{episode_index}", spawn=spawn_local_viewer)
 
     # Manually call python garbage collector after `rr.init` to avoid hanging in a blocking flush
@@ -145,7 +151,7 @@ def visualize_dataset(
         rr.serve(open_browser=False, web_port=web_port, ws_port=ws_port)
 
     logging.info("Logging to Rerun")
-    ipdb.set_trace()
+
     for batch in tqdm.tqdm(dataloader, total=len(dataloader)):
         # iterate over the batch
         for i in range(len(batch["index"])):
@@ -291,5 +297,4 @@ def main():
 
 
 if __name__ == "__main__":
-    os.environ["WINIT_UNIX_BACKEND"] = "x11"
     main()
